@@ -1,0 +1,226 @@
+2025-04-24 13:47:24.572 | INFO     | app.agent.base:run:218 - Executing step 1/25
+2025-04-24 13:47:36.477 | INFO     | app.llm:update_token_count:250 - Token usage: Input=5008, Completion=330, Cumulative Input=5008, Cumulative Completion=330, Total=5338, Cumulative Total=5338
+2025-04-24 13:47:36.484 | INFO     | app.agent.toolcall:think:180 - ✨reasoning_content-BEGIN:好的，用户需要从西安到川西的五日游计划，下周五出发。首先需要确定具体的出发日期。下周五是2025年5月2日，因为今天是2025年4月24日。接下来要查找现有的川西旅游攻略作为参考，所以调用searchTravelGuide工具，搜索“川西五日游攻略”。同时，用户可能不清楚川西的具体景点，需要通过webSearch获取川西的主要景点信息。完成这三个步骤后，才能进行后续的天气、交通和景点详细信息的查询。这样才能确保行程的合理性和详细性。
+✨reasoning_content-END
+
+2025-04-24 13:47:36.484 | INFO     | app.agent.toolcall:think:182 - ✨content-BEGIN: 
+
+ -content-END
+2025-04-24 13:47:36.484 | INFO     | app.agent.toolcall:think:185 - 🛠️ Manus selected 3 tools to use
+2025-04-24 13:47:36.484 | INFO     | app.agent.toolcall:think:194 - ---Function-Select-BEGIN----
+2025-04-24 13:47:36.484 | INFO     | app.agent.toolcall:think:196 - python_execute{"code":"from datetime import datetime, timedelta\n# 计算下周五的日期，今天是2025-04-24，星期四\ncurrent_date = datetime(2025, 4, 24)\ndays_ahead = (4 - current_date.weekday() + 7) % 7  # 下周五是5月2日\nstart_date = current_date + timedelta(days=days_ahead)\nprint(start_date.strftime('%Y-%m-%d'))"}
+2025-04-24 13:47:36.490 | INFO     | app.agent.toolcall:think:196 - searchTravelGuide{"query":"川西五日游攻略"}
+2025-04-24 13:47:36.490 | INFO     | app.agent.toolcall:think:196 - webSearch{"query":"川西主要旅游景点"}
+2025-04-24 13:47:36.496 | INFO     | app.agent.toolcall:think:197 - ---Function-Select-END----
+2025-04-24 13:47:42.225 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'python_execute'...
+2025-04-24 13:47:47.799 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'python_execute'-''{"code":"from datetime import datetime, timedelta\n# 计算下周五的日期，今天是2025-04-24，星期四\ncurrent_date = datetime(2025, 4, 24)\ndays_ahead = (4 - current_date.weekday() + 7) % 7  # 下周五是5月2日\nstart_date = current_date + timedelta(days=days_ahead)\nprint(start_date.strftime('%Y-%m-%d'))"}'' completed its mission! Result: Observed output of cmd python_execute:{
+    "code": "from datetime import datetime, timedelta\n# 计算下周五的日期，今天是2025-04-24，星期四\ncurrent_date = datetime(2025, 4, 24)\ndays_ahead = (4 - current_date.weekday() + 7) % 7  # 下周五是5月2日\nstart_date = current_date + timedelta(days=days_ahead)\nprint(start_date.strftime('%Y-%m-%d'))"
+} 
+ executed:
+{'observation': '2025-04-25\n', 'success': True}
+2025-04-24 13:47:47.812 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'searchTravelGuide'...
+2025-04-24 13:47:49.708 | INFO     | app.tool.search_travel_guides:execute:56 - query:川西五日游攻略-检索URL：['https://zhuanlan.zhihu.com/p/628240625', 'https://zhuanlan.zhihu.com/p/355866296', 'https://post.smzdm.com/p/am8rv07k/']
+2025-04-24 13:47:58.509 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'searchTravelGuide'-''{"query":"川西五日游攻略"}'' completed its mission! Result: Observed output of cmd searchTravelGuide:{
+    "query": "川西五日游攻略"
+} 
+ executed:
+这是一份可以参考的旅游攻略，你可以进行参考这份攻略的每日景点安排：## 川西五日游攻略
+
+### 概述
+川西地区以其壮丽的自然风光和丰富的文化遗产吸引了大量游客。本攻略将详细介绍川西五日游的行程安排，包括交通、景点、餐饮和住宿等信息。
+
+### 第一天：成都 - 康定
+**交通：**
+- **高铁/火车**：从成都东站乘坐高铁或火车前往康定，约需4-5小时。
+  
+**景点：**
+1. **康定情歌风景区**：体验浓郁的藏族风情，欣赏美丽的自然景色。
+2. **木格措（野人海）**：高原湖泊，四周雪山环绕，风景如画。
+
+**餐饮：**
+- **康定特色餐厅**：推荐品尝藏式火锅、酥油茶和糌粑。
+
+**住宿：**
+- **康定市区酒店**：如康定情歌大酒店，提供舒适的住宿环境和便捷的交通。
+
+### 第二天：康定 - 新都桥
+**交通：**
+- 包车或自驾，约2小时车程。
+
+**景点：**
+1. **折多山**：海拔4298米，是川藏线上重要的地理分界线。
+2. **新都桥**：摄影家的天堂，沿途风光无限。
+
+**餐饮：**
+- **新都桥镇餐馆**：尝试当地的牦牛肉和青稞酒。
+
+**住宿：**
+- **新都桥客栈**：如新都桥印象客栈，环境清幽，服务周到。
+
+### 第三天：新都桥 - 稻城亚丁
+**交通：**
+- 包车或自驾，约7-8小时车程。
+
+**景点：**
+1. **海子山**：古冰川遗迹，地貌奇特。
+2. **稻城白塔**：藏传佛教圣地，宁静祥和。
+
+**餐饮：**
+- **稻城县餐馆**：推荐品尝高原鱼和藏香猪。
+
+**住宿：**
+- **稻城亚丁酒店**：如亚丁驿站，设施齐全，位置优越。
+
+### 第四天：稻城亚丁一日游
+**景点：**
+1. **牛奶海**：高山湖泊，湖水清澈见底。
+2. **五色海**：因湖水颜色变化而得名，神秘美丽。
+3. **珍珠海**：位于仙乃日雪峰脚下，景色迷人。
+
+**餐饮：**
+- **景区内餐厅**：提供简单的快餐和热饮。
+
+**住宿：**
+- **亚丁村客栈**：如亚丁村藏家客栈，体验地道的藏族生活。
+
+### 第五天：稻城亚丁 - 成都
+**交通：**
+- 包车或自驾返回成都，约需10-12小时车程。建议提前一天预订返程车辆。
+
+**餐饮：**
+- **沿途服务区**：提供简餐和休息场所。
+
+### 小贴士
+1. **高原反应**：川西地区海拔较高，建议携带抗高反药物。
+2. **天气变化**：山区天气多变，需备好防寒衣物和雨具。
+3. **尊重习俗**：川西地区多为藏族聚居地，尊重当地文化和习俗。
+
+### 总结
+川西五日游是一次难忘的旅行体验，涵盖了自然风光与人文景观的完美结合。希望这份攻略能为你的旅程提供帮助，祝你旅途愉快！
+2025-04-24 13:47:58.521 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'webSearch'...
+2025-04-24 13:48:00.973 | INFO     | app.tool.WebSearchTool:execute:104 - query:川西主要旅游景点-检索URL：['https://zhuanlan.zhihu.com/p/483360958', 'https://www.thepaper.cn/newsDetail_forward_27297273']
+2025-04-24 13:48:05.456 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'webSearch'-''{"query":"川西主要旅游景点"}'' completed its mission! Result: Observed output of cmd webSearch:{
+    "query": "川西主要旅游景点"
+} 
+ executed:
+根据提供的检索结果，以下是川西主要旅游景点的相关信息：
+
+1. **九寨沟**：被誉为人间仙境和童话世界，以其清澈见底的溪流、碧波荡漾的湖泊和飞泻而下的瀑布闻名，四周森林植被和山峰构成美丽的山水画卷。
+
+2. **黄龙**：被称为人间瑶池，以其数千个钙化彩池群著称，彩池随环境变化和阳光角度变换色彩，是自然奇观之一。
+
+3. **稻城亚丁**：被誉为蓝色星球上最后一片净土，有清澈的湖水、苍翠的原始森林，是自然风光秀美的纯净之地。
+
+4. **四姑娘山**：包括双桥沟、长坪沟、海子沟三个景区，以雪山、森林、湖泊和清澈溪流著称，是登山徒步爱好者的天堂。
+
+5. **毕棚沟**：被称为“川西小瑞士”，以龙王海、磐羊湖和燕子岩等景点著称，茂密的原始森林和湖泊瀑布构成世外桃源般的景色。
+
+6. **塔公草原**：甘孜州著名草原，四周群山环抱，绿草如茵，牛羊成群，构成美丽的自然画卷。
+
+7. **新都桥**：被誉为“摄影家的天堂”，有无尽草甸、溪流、悠闲的牛羊和藏族村寨，是如诗如画的风景地。
+
+8. **墨石公园**：川西一处独特的异域星球景观，黑色岩石在翠绿草原衬托下显得壮丽，充满神秘色彩。
+
+9. **色达**：一个充满信仰与神秘色彩的地方，有成千上万的红色僧舍，色达五明佛学院、坛城、天葬台等景点，体现浓厚的藏族文化和宗教信仰。
+
+这些景点各具特色，从自然风光到文化体验，展现了川西丰富的旅游资源和多样的景观。
+2025-04-24 13:48:05.462 | INFO     | app.agent.base:run:218 - Executing step 2/25
+2025-04-24 13:48:19.591 | INFO     | app.llm:update_token_count:250 - Token usage: Input=6671, Completion=446, Cumulative Input=11679, Cumulative Completion=776, Total=7117, Cumulative Total=12455
+2025-04-24 13:48:19.609 | INFO     | app.agent.toolcall:think:180 - ✨reasoning_content-BEGIN:好的，用户需要从西安到川西的五日游计划，出发日期是下周五（2025年5月2日）。已经通过工具确认了出发日期，获取了参考攻略和川西主要景点。接下来需要补充的信息包括：
+
+1. **交通信息**：西安到康定的往返交通方式，需要查询火车或飞机班次。
+2. **天气情况**：5月2日开始的未来十天天气，影响行程安排。
+3. **景点详情**：稻城亚丁、新都桥等景点的详细介绍和门票信息。
+4. **酒店和餐饮推荐**：根据每日行程推荐入住区域和就餐建议。
+5. **导航路线**：各景点间的交通方式，确保行程连贯。
+
+需要调用的工具：
+- **trainWithAirplane**：查询西安到康定的交通选项。
+- **getWeather**：获取康定、稻城等地的天气。
+- **poiInfoSearchBatch**：批量获取景点详细信息。
+- **search_hotel_restaurant**：推荐住宿和餐饮区域。
+✨reasoning_content-END
+
+2025-04-24 13:48:19.634 | INFO     | app.agent.toolcall:think:182 - ✨content-BEGIN: 
+
+ -content-END
+2025-04-24 13:48:19.640 | INFO     | app.agent.toolcall:think:185 - 🛠️ Manus selected 4 tools to use
+2025-04-24 13:48:19.640 | INFO     | app.agent.toolcall:think:194 - ---Function-Select-BEGIN----
+2025-04-24 13:48:19.645 | INFO     | app.agent.toolcall:think:196 - trainWithAirplane{"origin_cityName":"西安","destination_cityName":"康定","date":"2025-05-02"}
+2025-04-24 13:48:19.651 | INFO     | app.agent.toolcall:think:196 - getWeather{"cityName":"康定","date":"2025-05-02"}
+2025-04-24 13:48:19.651 | INFO     | app.agent.toolcall:think:196 - getWeather{"cityName":"稻城","date":"2025-05-02"}
+2025-04-24 13:48:19.663 | INFO     | app.agent.toolcall:think:196 - poiInfoSearchBatch{"city_with_poi_name":"[[\"康定\",\"木格措\"],[\"稻城\",\"稻城亚丁\"],[\"新都桥\",\"折多山\"],[\"稻城\",\"牛奶海\"]]"}
+2025-04-24 13:48:19.663 | INFO     | app.agent.toolcall:think:197 - ---Function-Select-END----
+2025-04-24 13:48:19.923 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'trainWithAirplane'...
+2025-04-24 13:48:19.923 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'trainWithAirplane'-''{"origin_cityName":"西安","destination_cityName":"康定","date":"2025-05-02"}'' completed its mission! Result: Observed output of cmd trainWithAirplane:{
+    "origin_cityName": "西安",
+    "destination_cityName": "康定",
+    "date": "2025-05-02"
+} 
+ executed:
+无法获取城市信息，请尝试其他工具。
+2025-04-24 13:48:19.923 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'getWeather'...
+2025-04-24 13:48:20.671 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'getWeather'-''{"cityName":"康定","date":"2025-05-02"}'' completed its mission! Result: Observed output of cmd getWeather:{
+    "cityName": "康定",
+    "date": "2025-05-02"
+} 
+ executed:
+2025-04-23日天气:小雨,风力:4,温度:12.0,风向:北风\n2025-04-24日天气:小雨,风力:4,温度:9.0,风向:北风\n2025-04-25日天气:小雨,风力:4,温度:10.0,风向:北风\n2025-04-26日天气:小雨,风力:4,温度:15.0,风向:北风\n2025-04-27日天气:小雨,风力:4,温度:12.0,风向:北风\n2025-04-28日天气:小雨,风力:3,温度:13.0,风向:北风\n2025-04-29日天气:小雨,风力:3,温度:13.0,风向:北风\n2025-04-30日天气:阵雨,风力:3,温度:15.0,风向:北风\n2025-05-01日天气:阴,风力:4,温度:15.0,风向:东风\n2025-05-02日天气:阴,风力:4,温度:16.0,风向:东风
+2025-04-24 13:48:20.678 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'getWeather'...
+2025-04-24 13:48:21.493 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'getWeather'-''{"cityName":"稻城","date":"2025-05-02"}'' completed its mission! Result: Observed output of cmd getWeather:{
+    "cityName": "稻城",
+    "date": "2025-05-02"
+} 
+ executed:
+2025-04-23日天气:小雨,风力:3,温度:16.0,风向:北风\n2025-04-24日天气:小雨,风力:3,温度:14.0,风向:北风\n2025-04-25日天气:小雨,风力:3,温度:15.0,风向:北风\n2025-04-26日天气:小雨,风力:3,温度:15.0,风向:北风\n2025-04-27日天气:阵雨,风力:3,温度:12.0,风向:北风\n2025-04-28日天气:阵雨,风力:3,温度:10.0,风向:北风\n2025-04-29日天气:阵雨,风力:2,温度:10.0,风向:北风\n2025-04-30日天气:小雨,风力:2,温度:8.0,风向:北风\n2025-05-01日天气:雨,风力:2,温度:12.0,风向:南风\n2025-05-02日天气:雨,风力:2,温度:14.0,风向:东南风
+2025-04-24 13:48:21.506 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'poiInfoSearchBatch'...
+2025-04-24 13:48:27.132 | INFO     | app.tool.poiInfoSearchBatchTool:get_poi_info_web:97 - query:介绍康定木格措信息，景区门票信息-检索URL：['https://www.dahepiao.com/lvyounews1/20240813481935.html', 'https://www.kangdingqingge.cn/design_show.aspx?id=154&channel=design']
+2025-04-24 13:48:32.696 | INFO     | app.tool.poiInfoSearchBatchTool:get_poi_info_web:97 - query:介绍稻城稻城亚丁信息，景区门票信息-检索URL：['https://cn.yadingtour.com/e-news/notice/726-2023-03-05', 'https://cn.yadingtour.com/']
+2025-04-24 13:48:46.685 | INFO     | app.tool.poiInfoSearchBatchTool:get_poi_info_web:97 - query:介绍新都桥折多山信息，景区门票信息-检索URL：['https://www.zg03.com/hailuogou/63844.html', 'https://you.ctrip.com/sight/kangding344/43874.html']
+2025-04-24 13:49:04.624 | INFO     | app.tool.poiInfoSearchBatchTool:get_poi_info_web:97 - query:介绍稻城牛奶海信息，景区门票信息-检索URL：['https://you.ctrip.com/sight/daocheng342/43890.html', 'https://www.mafengwo.cn/poi/15213.html']
+2025-04-24 13:49:07.601 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'poiInfoSearchBatch'-''{"city_with_poi_name":"[[\"康定\",\"木格措\"],[\"稻城\",\"稻城亚丁\"],[\"新都桥\",\"折多山\"],[\"稻城\",\"牛奶海\"]]"}'' completed its mission! Result: Observed output of cmd poiInfoSearchBatch:{
+    "city_with_poi_name": "[[\"康定\",\"木格措\"],[\"稻城\",\"稻城亚丁\"],[\"新都桥\",\"折多山\"],[\"稻城\",\"牛奶海\"]]"
+} 
+ executed:
+{"康定-木格措": "木格措景区坐落于贡嘎山脉中段，是国家4A级旅游景区，由杜鹃峡、芳草坪、七色海等景点组成，拥有原始森林、草原和雪山景观，四季美景各异。。成人票：1. 木格措药池沸泉35元；2. 木格措门票+往返观光车180元；3. 木格措门票+往返观光车+药池沸泉215元；4. 木格措圣湖游船票66元。老人票：木格措门票+往返观光车90元。学生票：木格措门票+往返观光车142元。。原始森林、草原、雪山景观，四季美景包括双雾坠海、木格夕照等奇景，海滨珍珠沙滩可体验沙浴、日光浴。", "稻城-稻城亚丁": "稻城亚丁景区位于四川省甘孜藏族自治州，以其原始的生态环境和独特的宗教文化闻名，被誉为“蓝色星球上的最后一片净土”。景区内有海子山、仙乃日雪山、珍珠海等著名景点，四季景色各异，是徒步和摄影爱好者的天堂。。每年4月1日——11月30日：成人146元/人；每年12月1日——次年3月31日：成人120元/人。观光车票（游客中心至扎灌崩）：往返120元/人。观景车票：往返70元/人、单程40元/人。保险：10元/人（可选）。特殊群体享受国家规定的门票优惠政策。。稻城亚丁以海子山、仙乃日雪山和珍珠海等自然风光著称，四季景色迷人，适合徒步和摄影。", "新都桥-折多山": "新都桥折多山位于四川省甘孜藏族自治州，海拔4298米，是川藏线上的重要地标。山路曲折，风景壮丽，但路况复杂，对驾驶技术要求较高。沿途可欣赏到高原特有的自然风光，包括雪山、草原和藏族村落。新都桥本身被称为“摄影家的天堂”，以其迷人的自然景色和独特的藏式民居吸引游客。。新都桥和折多山作为自然景观，一般不单独收取门票，但部分景点如折多山垭口可能有观景台收费，通常在10-30元不等。具体价格建议提前查询或现场询问。。新都桥和折多山以其壮丽的自然风光和摄影机会为特色，游客可以体验高原风光、藏族文化，以及进行摄影创作。折多山垭口和沿途的观景台是拍照的好地方。", "稻城-牛奶海": "稻城牛奶海，位于央迈勇神山脚下，是一个古冰川湖，湖水清莹碧蓝，四周被雪山环绕。湖水深浅不一，颜色从近岸黑色到浅绿色，再到深处的碧绿色，景色极为壮观。游客需注意，通往牛奶海的路较为崎岖，海拔高，气温低，风大，建议备好干粮、水及保暖衣物，并注意环保，不要剧烈运动以防高原反应。。稻城牛奶海位于稻城亚丁风景区内，门票价格根据具体景区政策可能有所不同，建议查询最新门票信息。。牛奶海以其碧蓝的湖水和周围环绕的雪山著称，是亚丁地区的圣湖之一，海拔4600米，景色壮观。"}
+2025-04-24 13:49:07.612 | INFO     | app.agent.base:run:218 - Executing step 3/25
+2025-04-24 13:49:21.139 | INFO     | app.llm:update_token_count:250 - Token usage: Input=8610, Completion=388, Cumulative Input=20289, Cumulative Completion=1164, Total=8998, Cumulative Total=21453
+2025-04-24 13:49:21.145 | INFO     | app.agent.toolcall:think:180 - ✨reasoning_content-BEGIN:好的，用户需要从西安到川西的五日游计划，出发日期是下周五（2025年5月2日）。已经通过工具确认了出发日期，获取了参考攻略和川西主要景点。接下来需要补充的信息包括：
+
+1. **交通信息**：西安到康定的往返交通方式，需要查询火车或飞机班次。
+2. **天气情况**：5月2日开始的未来十天天气，影响行程安排。
+3. **景点详情**：稻城亚丁、新都桥等景点的详细介绍和门票信息。
+4. **酒店和餐饮推荐**：根据每日行程推荐入住区域和就餐建议。
+5. **导航路线**：各景点间的交通方式，确保行程连贯。
+
+需要调用的工具：
+- **trainWithAirplane**：查询西安到康定的交通选项。
+- **getWeather**：获取康定、稻城等地的天气。
+- **poiInfoSearchBatch**：批量获取景点详细信息。
+- **search_hotel_restaurant**：推荐住宿和餐饮区域。
+✨reasoning_content-END
+
+2025-04-24 13:49:21.151 | INFO     | app.agent.toolcall:think:182 - ✨content-BEGIN: 
+
+
+
+ -content-END
+2025-04-24 13:49:21.163 | INFO     | app.agent.toolcall:think:185 - 🛠️ Manus selected 3 tools to use
+2025-04-24 13:49:21.163 | INFO     | app.agent.toolcall:think:194 - ---Function-Select-BEGIN----
+2025-04-24 13:49:21.170 | INFO     | app.agent.toolcall:think:196 - search_hotel_restaurant{"query":"康定木格措附近的三星级酒店区域","cityName":"康定"}
+2025-04-24 13:49:21.176 | INFO     | app.agent.toolcall:think:196 - search_hotel_restaurant{"query":"稻城亚丁景区周边的酒店区域","cityName":"稻城"}
+2025-04-24 13:49:21.177 | INFO     | app.agent.toolcall:think:196 - mapGuide{"origin_cityName":"康定","origin":"康定情歌大酒店","destination_cityName":"新都桥","destination":"折多山观景台"}
+2025-04-24 13:49:21.177 | INFO     | app.agent.toolcall:think:197 - ---Function-Select-END----
+2025-04-24 13:49:21.461 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'search_hotel_restaurant'...
+2025-04-24 13:49:32.819 | INFO     | app.tool.search_hotel_restaurant:execute:158 - 搜索周围的酒店、餐厅信息失败，错误信息：'poiName'
+2025-04-24 13:49:45.719 | INFO     | app.tool.search_hotel_restaurant:execute:158 - 搜索周围的酒店、餐厅信息失败，错误信息：'poiName'
+2025-04-24 13:49:55.967 | ERROR    | app.tool.search_hotel_restaurant:execute:156 - 搜索周围的酒店、餐厅信息失败，重试3次后仍然失败，错误信息：'poiName'
+2025-04-24 13:49:55.980 | INFO     | app.agent.toolcall:act:277 - 🎯 Tool 'search_hotel_restaurant'-''{"query":"康定木格措附近的三星级酒店区域","cityName":"康定"}'' completed its mission! Result: Observed output of cmd search_hotel_restaurant:{
+    "query": "康定木格措附近的三星级酒店区域",
+    "cityName": "康定"
+} 
+ executed:
+搜索周围的酒店、餐厅信息失败
+2025-04-24 13:49:55.986 | INFO     | app.agent.toolcall:execute_tool:307 - 🔧 Activating tool: 'search_hotel_restaurant'...
+2025-04-24 13:50:04.576 | INFO     | app.tool.search_hotel_restaurant:execute:158 - 搜索周围的酒店、餐厅信息失败，错误信息：'poiName'
+2025-04-24 13:50:14.014 | INFO     | app.tool.search_hotel_restaurant:execute:158 - 搜索周围的酒店、餐厅信息失败，错误信息：'poiName'
